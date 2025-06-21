@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CosmicUnfound Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0c1d;
+      color: #f2f2f2;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffe0;
+    }
+    article {
+      background: #1b1d30;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00ffe055;
+    }
+    .title {
+      font-size: 1.4rem;
+      color: #00ffe0;
+    }
+    .date {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌌 CosmicUnfound – Hidden Space Research</h1>
+  <div id="posts"></div>
+
+  <script>
+    const posts = JSON.parse(localStorage.getItem('cosmicPosts') || '[]');
+    const postsDiv = document.getElementById('posts');
+    posts.reverse().forEach(post => {
+      const article = document.createElement('article');
+      article.innerHTML = `
+        <div class="title">${post.title}</div>
+        <div class="date">Posted on: ${post.date}</div>
+        <p>${post.content}</p>
+      `;
+      postsDiv.appendChild(article);
+    });
+  </script>
+</body>
+</html>
